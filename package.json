@@ -1,17 +1,733 @@
-{
-  "name": "staruml.xmi",
-  "title": "XMI",
-  "description": "XMI (XML Metadata Interchange) import and export",
-  "homepage": "https://github.com/staruml/staruml-xmi",
-  "issues": "https://github.com/staruml/staruml-xmi/issues",
-  "version": "0.9.3",
-  "author": {
-    "name": "Minkyu Lee",
-    "email": "niklaus.lee@gmail.com",
-    "url": "https://github.com/niklauslee"
-  },
-  "license": "MIT",
-  "engines": {
-    "staruml": "^3.0.0"
-  }
-}
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/"
+xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+xmlns:s="http://www.w3.org/2001/XMLSchema"
+xmlns:tns="http://www.mydigitallibrary.com/schema/test"
+xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+targetNamespace="http://www.mydigitallibrary.com/schema/test">
+<types>
+<s:schema elementFormDefault="qualified"
+targetNamespace="http://www.mydigitallibrary.com/schema/test">
+<s:element name="displayBookDetails">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="author" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="name" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="price" type="s:float" />
+<s:element minOccurs="1" maxOccurs="1" name="trackNo" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="status" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="edition" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="dateOfPurchase"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="displayBookDetailsResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="displayBookDetails"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="updateStatus">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="dateOfPurchase"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="Status" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="name" type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="updateStatusResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="updateStatus"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="searchBook">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="BookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="name" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="author" type="s:string"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="searchBookResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="searchBook"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="verifyMember">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="memberName"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="verifyMemberResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="verifyMember"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="issueBook">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="noBookIssued"
+type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="maxBookLimit"
+type="s:int" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="issueBookResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="issueBook"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="calculateFine">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="dateOfPurchase"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="date" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="type" type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="calculateFineResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="calculateFine"
+type="s:float" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="createBill">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billNo" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="createBillResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="createBill"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="returnBook">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="status" type="s:string"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="returnBookResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="returnBook"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="createTransaction">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="transId" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="dateOfIssue"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="dueDate" type="s:string"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="createTransactionResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="createTransaction"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="deleteTransaction">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="transId" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="dateOfIssue"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="dueDate" type="s:string"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="deleteTransactionResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="deleteTransaction"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveTransaction">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="bookId" type="s:string"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="transId" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="dateOfIssue"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="dueDate" type="s:string"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveTransactionResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="retrieveTransaction"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveMember">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="phone" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="memberName"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="type" type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="retrieveMemberResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="retrieveMember"
+type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="increaseBookIssued">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="type" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="noBookIssued"
+type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="maxBookLimit"
+type="s:int" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="increaseBookIssuedResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="increaseBookIssued"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="decreaseBookIssued">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="type" type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="noBookIssued"
+type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="maxBookLimit"
+type="s:int" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="decreaseBookIssuedResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="decreaseBookIssued"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="payBill">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billNo" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="payBillResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="payBill" type="tns:void"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="billCreate">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billNo" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float"
+/>
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="billCreateResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billCreate"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="billUpdate">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billNo" type="s:int" />
+<s:element minOccurs="1" maxOccurs="1" name="memberId"
+type="s:string" />
+<s:element minOccurs="1" maxOccurs="1" name="amount" type="s:float"
+/>
+<s:element minOccurs="1" maxOccurs="1" name="date" type="s:string" />
+</s:sequence>
+</s:complexType>
+</s:element>
+<s:element name="billUpdateResponse">
+<s:complexType>
+<s:sequence>
+<s:element minOccurs="1" maxOccurs="1" name="billUpdate"
+type="tns:void" />
+</s:sequence>
+</s:complexType>
+</s:element>
+</s:schema></types><message name="displayBookDetailsSoapIn">
+<part name="parameters" element="tns:displayBookDetails" />
+</message>
+<message name="displayBookDetailsSoapOut">
+<part name="parameters" element="tns:displayBookDetailsResponse" />
+</message>
+<message name="updateStatusSoapIn">
+<part name="parameters" element="tns:updateStatus" />
+</message>
+<message name="updateStatusSoapOut">
+<part name="parameters" element="tns:updateStatusResponse" />
+</message>
+<message name="searchBookSoapIn">
+<part name="parameters" element="tns:searchBook" />
+</message>
+<message name="searchBookSoapOut">
+<part name="parameters" element="tns:searchBookResponse" />
+</message>
+<message name="verifyMemberSoapIn">
+<part name="parameters" element="tns:verifyMember" />
+</message>
+<message name="verifyMemberSoapOut">
+<part name="parameters" element="tns:verifyMemberResponse" />
+</message>
+<message name="issueBookSoapIn">
+<part name="parameters" element="tns:issueBook" />
+</message>
+<message name="issueBookSoapOut">
+<part name="parameters" element="tns:issueBookResponse" />
+</message>
+<message name="calculateFineSoapIn">
+<part name="parameters" element="tns:calculateFine" />
+</message>
+<message name="calculateFineSoapOut">
+<part name="parameters" element="tns:calculateFineResponse" />
+</message>
+<message name="createBillSoapIn">
+<part name="parameters" element="tns:createBill" />
+</message>
+<message name="createBillSoapOut">
+<part name="parameters" element="tns:createBillResponse" />
+</message>
+<message name="returnBookSoapIn">
+<part name="parameters" element="tns:returnBook" />
+</message>
+<message name="returnBookSoapOut">
+<part name="parameters" element="tns:returnBookResponse" />
+</message>
+<message name="createTransactionSoapIn">
+<part name="parameters" element="tns:createTransaction" />
+</message>
+<message name="createTransactionSoapOut">
+<part name="parameters" element="tns:createTransactionResponse" />
+</message>
+<message name="deleteTransactionSoapIn">
+<part name="parameters" element="tns:deleteTransaction" />
+</message>
+<message name="deleteTransactionSoapOut">
+<part name="parameters" element="tns:deleteTransactionResponse" />
+</message>
+<message name="retrieveTransactionSoapIn">
+<part name="parameters" element="tns:retrieveTransaction" />
+</message>
+<message name="retrieveTransactionSoapOut">
+<part name="parameters" element="tns:retrieveTransactionResponse" />
+</message>
+<message name="retrieveMemberSoapIn">
+<part name="parameters" element="tns:retrieveMember" />
+</message>
+<message name="retrieveMemberSoapOut">
+<part name="parameters" element="tns:retrieveMemberResponse" />
+</message>
+<message name="increaseBookIssuedSoapIn">
+<part name="parameters" element="tns:increaseBookIssued" />
+</message>
+<message name="increaseBookIssuedSoapOut">
+<part name="parameters" element="tns:increaseBookIssuedResponse" />
+</message>
+<message name="decreaseBookIssuedSoapIn">
+<part name="parameters" element="tns:decreaseBookIssued" />
+</message>
+<message name="decreaseBookIssuedSoapOut">
+<part name="parameters" element="tns:decreaseBookIssuedResponse" />
+</message>
+<message name="payBillSoapIn">
+<part name="parameters" element="tns:payBill" />
+</message>
+<message name="payBillSoapOut">
+<part name="parameters" element="tns:payBillResponse" />
+</message>
+<message name="billCreateSoapIn">
+<part name="parameters" element="tns:billCreate" />
+</message>
+<message name="billCreateSoapOut">
+<part name="parameters" element="tns:billCreateResponse" />
+</message>
+<message name="billUpdateSoapIn">
+<part name="parameters" element="tns:billUpdate" />
+</message>
+<message name="billUpdateSoapOut">
+<part name="parameters" element="tns:billUpdateResponse" />
+</message>
+<portType name="DigitalLibrarySoap">
+<operation name="displayBookDetails">
+<input message="tns:displayBookDetailsSoapIn" />
+<output message="tns:displayBookDetailsSoapOut" />
+</operation>
+<operation name="updateStatus">
+<input message="tns:updateStatusSoapIn" />
+<output message="tns:updateStatusSoapOut" />
+</operation>
+<operation name="searchBook">
+<input message="tns:searchBookSoapIn" />
+<output message="tns:searchBookSoapOut" />
+</operation>
+<operation name="verifyMember">
+<input message="tns:verifyMemberSoapIn" />
+<output message="tns:verifyMemberSoapOut" />
+</operation>
+<operation name="issueBook">
+<input message="tns:issueBookSoapIn" />
+<output message="tns:issueBookSoapOut" />
+</operation>
+<operation name="calculateFine">
+<input message="tns:calculateFineSoapIn" />
+<output message="tns:calculateFineSoapOut" />
+</operation>
+<operation name="createBill">
+<input message="tns:createBillSoapIn" />
+<output message="tns:createBillSoapOut" />
+</operation>
+<operation name="returnBook">
+<input message="tns:returnBookSoapIn" />
+<output message="tns:returnBookSoapOut" />
+</operation>
+<operation name="createTransaction">
+<input message="tns:createTransactionSoapIn" />
+<output message="tns:createTransactionSoapOut" />
+</operation>
+<operation name="deleteTransaction">
+<input message="tns:deleteTransactionSoapIn" />
+<output message="tns:deleteTransactionSoapOut" />
+</operation>
+<operation name="retrieveTransaction">
+<input message="tns:retrieveTransactionSoapIn" />
+<output message="tns:retrieveTransactionSoapOut" />
+</operation>
+<operation name="retrieveMember">
+<input message="tns:retrieveMemberSoapIn" />
+<output message="tns:retrieveMemberSoapOut" />
+</operation>
+<operation name="increaseBookIssued">
+<input message="tns:increaseBookIssuedSoapIn" />
+<output message="tns:increaseBookIssuedSoapOut" />
+</operation>
+<operation name="decreaseBookIssued">
+<input message="tns:decreaseBookIssuedSoapIn" />
+<output message="tns:decreaseBookIssuedSoapOut" />
+</operation>
+<operation name="payBill">
+<input message="tns:payBillSoapIn" />
+<output message="tns:payBillSoapOut" />
+</operation>
+<operation name="billCreate">
+<input message="tns:billCreateSoapIn" />
+<output message="tns:billCreateSoapOut" />
+</operation>
+<operation name="billUpdate">
+<input message="tns:billUpdateSoapIn" />
+<output message="tns:billUpdateSoapOut" />
+</operation>
+</portType>
+<binding name="DigitalLibrarySoap" type="tns:DigitalLibrarySoap">
+<soap:binding transport="http://schemas.xmlsoap.org/soap/http"
+style="document" />
+<operation name="displayBookDetails">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/displayBookDe
+tails" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="updateStatus">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/updateStatus"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="searchBook">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/searchBook"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="verifyMember">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/verifyMember"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="issueBook">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/issueBook"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="calculateFine">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/calculateFine
+" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="createBill">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/createBill"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="returnBook">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/returnBook"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="createTransaction">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/createTransac
+tion" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="deleteTransaction">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/deleteTransac
+tion" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="retrieveTransaction">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/retrieveTrans
+action" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="retrieveMember">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/retrieveMembe
+r" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="increaseBookIssued">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/increaseBookI
+ssued" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="decreaseBookIssued">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/decreaseBookI
+ssued" style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="payBill">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/payBill"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="billCreate">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/billCreate"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+<operation name="billUpdate">
+<soap:operation
+soapAction="http://www.mydigitallibrary.com/schema/test/billUpdate"
+style="document" />
+<input>
+<soap:body use="literal" />
+</input>
+<output>
+<soap:body use="literal" />
+</output>
+</operation>
+</binding>
+<service name="DigitalLibrary">
+<port name="DigitalLibrarySoap" binding="tns:DigitalLibrarySoap">
+<soap:address location="###SERVER_ADDRESS###DigitalLibrary" />
+</port>
+</service>
+</definitions>
