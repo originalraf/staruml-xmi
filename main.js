@@ -65,5 +65,5 @@ function init () {
 }
 
 exports.init = init
-
+staruml-xmi/main.js
 
