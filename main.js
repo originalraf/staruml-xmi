@@ -65,7 +65,9 @@ function init () {
 }
 
 exports.init = init
-staruml-xmi/main.jswebsevice DigitalLibrary("http://www.mydigitallibrary.com/schema/test")
+staruml-xmi/main.js
+
+websevice DigitalLibrary("http://www.mydigitallibrary.com/schema/test")
 {
 	void displayBookDetails(string bookId, string author, string name, float price,int trackNo, string status, string edition, string date0fPurchase);
 	void updateStatus(string bookId, string date0fPurchase, string Status, string name);
